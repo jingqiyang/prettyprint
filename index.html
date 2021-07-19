@@ -37,7 +37,7 @@
 
 <label for="inputJson">
 	<span class="textbox">Input</span>
-	<textarea id="inputJson"></textarea>
+	<textarea id="inputJson">{"hello": "this is a sample json object", "world": [{"hi": "paste your json into the input text box","earth": "toggle the switch to change spacing"}]}</textarea>
 </label>
 	<label for="outputJson">
 	<span class="textbox">Output</span>
@@ -54,11 +54,15 @@ var outputJson = document.getElementById("outputJson");
 var toggle = document.getElementById("toggle");
 var spacing = toggle.checked ? 4 : 2;
 
-inputJson.addEventListener("keyup", async function(event) {
+inputJson.addEventListener("keyup", function(event) {
     updateOutputJson();
 });
 
-toggle.addEventListener("change", async function(event) {
+document.addEventListener("DOMContentLoaded", function() {
+    updateOutputJson();
+});
+
+toggle.addEventListener("change", function(event) {
     spacing = toggle.checked ? 4 : 2;
     updateOutputJson();
 });
