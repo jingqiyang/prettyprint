@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+
+<head>
+<title>Json Pretty Print</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="./style.css" rel="stylesheet" />
+<link rel="icon" href="#">
+</head>
+
+<body>
+<header>
+<h1 id="pg-title">Json Pretty Print</h1>
+<hr>
+</header>
+
+
+<!-- toggle button -->
+
+<input class="input" id="toggle" type="checkbox">
+
+<label class="label" for="toggle">
+  <div class="left">2 Spaces</div>
+
+  <div class="switch">
+    <span class="slider round"></span>
+  </div>
+
+  <div class="right">4 Spaces</div>
+</label>
+
+<p>&zwnj;</p>
+
+
+<!-- input and output boxes -->
+
+<label for="inputJson">
+	<span class="textbox">Input</span>
+	<textarea id="inputJson"></textarea>
+</label>
+	<label for="outputJson">
+	<span class="textbox">Output</span>
+	<textarea id="outputJson"></textarea>
+</label>
+
+
+<!-- update output box -->
+
+<script type="text/javascript">
+
+var inputJson = document.getElementById("inputJson");
+var outputJson = document.getElementById("outputJson");
+var toggle = document.getElementById("toggle");
+var spacing = toggle.checked ? 4 : 2;
+
+inputJson.addEventListener("keyup", async function(event) {
+    updateOutputJson();
+});
+
+toggle.addEventListener("change", async function(event) {
+    spacing = toggle.checked ? 4 : 2;
+    updateOutputJson();
+});
+
+function updateOutputJson() {
+	try {
+		if (!inputJson.value) {
+			outputJson.value = null;
+		} else {
+			outputJson.value = JSON.stringify(JSON.parse(inputJson.value), null, spacing);
+		}
+	} catch (err) {
+		outputJson.value = err.message;
+	}
+}
+
+</script>

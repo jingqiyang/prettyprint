@@ -1,0 +1,159 @@
+@import url('https://themes.googleusercontent.com/fonts/css?kit=NVWGKW8pC4yJvbnzJuWfbiB38A_Z_8wKoRHMSx1gVi6WYRgE3v-r3GoQb6ax0_L_hsmsMnmAOnuclselIyjr9A');
+body {
+    font-family: 'Raleway', sans-serif, Arial;
+    margin-left: 80px;
+    margin-right: 80px;
+    color: #01380f;
+    line-height: 26px;
+}
+
+header {
+    white-space: nowrap;
+    margin-left: -60px;
+    margin-right: -60px;
+}
+
+#pg-title {
+    font-family: 'Raleway', sans-serif, Arial;
+    display: inline;
+    line-height: 56px;
+}
+
+hr {
+    margin-top: 4px;
+    margin-bottom: 32px;
+    border-color: #e3f2e7;
+    background-color: #e3f2e7;
+    color: #e3f2e7;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+p, li {
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+    color: #369652;
+}
+
+/* toggle switch (source: https://stackoverflow.com/questions/63410507/how-to-connect-two-options-and-toggle-switch-buttons) */
+
+.label {
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.switch,
+.input:checked + .label .left,
+.input:not(:checked) + .label .right {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.input {
+  display: none;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 25px;
+  width: 25px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .label .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .label .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .label .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.left, .right {
+  margin: 0 .5em;
+  font-family: 'Raleway', sans-serif, Arial;
+}
+
+/* text box */
+
+label {
+    width: 500px;
+    float: left;
+    margin: 0 20px 0 0;
+}
+
+.textbox {
+    display: block;
+    margin: 0 0 3px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    width: 500px;
+    height: 700px !important;
+    border: 1px solid #000;
+    resize: none;
+}
+
+@media screen and (max-width: 769px) {
+
+    body {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    header {
+        margin-left: -5px;
+        margin-right: -5px;
+    }
+}
