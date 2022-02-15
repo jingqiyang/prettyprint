@@ -1,10 +1,16 @@
 @import url('https://themes.googleusercontent.com/fonts/css?kit=NVWGKW8pC4yJvbnzJuWfbiB38A_Z_8wKoRHMSx1gVi6WYRgE3v-r3GoQb6ax0_L_hsmsMnmAOnuclselIyjr9A');
+
 body {
     font-family: 'Raleway', sans-serif, Arial;
     margin-left: 80px;
     margin-right: 80px;
-    color: #01380f;
     line-height: 26px;
+    background-color: #2b2b2b;
+}
+
+body, select {
+    font-family: 'Raleway', sans-serif, Arial;
+    color: #9dfab8;
 }
 
 header {
@@ -22,9 +28,7 @@ header {
 hr {
     margin-top: 4px;
     margin-bottom: 32px;
-    border-color: #e3f2e7;
-    background-color: #e3f2e7;
-    color: #e3f2e7;
+    border-color: #9dfab8;
 }
 
 h1 {
@@ -41,9 +45,15 @@ p, li {
     font-size: 18px;
 }
 
-a {
-    text-decoration: none;
-    color: #369652;
+select {
+    font-size: 16px;
+    width: 160px;
+    height: 28px;
+}
+
+select, textarea, .slider {
+    background-color: #404040;
+    border-color: #404040;
 }
 
 /* toggle switch (source: https://stackoverflow.com/questions/63410507/how-to-connect-two-options-and-toggle-switch-buttons) */
@@ -79,7 +89,6 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -97,11 +106,7 @@ a {
 }
 
 input:checked + .label .slider {
-  background-color: #2196f3;
-}
-
-input:focus + .label .slider {
-  box-shadow: 0 0 1px #2196f3;
+  background-color: #59b56d;
 }
 
 input:checked + .label .slider:before {
@@ -141,8 +146,8 @@ label {
 textarea {
     width: 500px;
     height: 700px !important;
-    border: 1px solid #000;
     resize: none;
+    color: white;
 }
 
 @media screen and (max-width: 1220px) {
