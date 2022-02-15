@@ -16,7 +16,7 @@
 </header>
 
 
-<!-- toggle button -->
+<!-- toggle button + dropdown list -->
 
 <input class="input" id="toggle" type="checkbox">
 
@@ -30,6 +30,14 @@
   <div class="right">4 Spaces</div>
 </label>
 
+<form>
+  <select id="caseList">
+    <option value="original" selected="selected">original case</option>
+    <option value="snake_case">snake_case</option>
+    <option value="camelCase">camelCase</option>
+  </select>
+</form>
+
 <p>&zwnj;</p>
 
 
@@ -37,7 +45,7 @@
 
 <label for="inputJson">
 	<span class="textbox">Input</span>
-	<textarea id="inputJson">{"hello": "this is a sample json object", "world": [{"hi": "paste your json into the input text box","earth": "toggle the switch to change spacing"}]}</textarea>
+	<textarea id="inputJson">{"hello_world": "this is a sample json object", "whatsUp": [{"hi": "paste your json into the input text box","earth": "toggle the switch to change spacing"}]}</textarea>
 </label>
 	<label for="outputJson">
 	<span class="textbox">Output</span>
@@ -52,7 +60,11 @@
 var inputJson = document.getElementById("inputJson");
 var outputJson = document.getElementById("outputJson");
 var toggle = document.getElementById("toggle");
+var caseList = document.getElementById("caseList");
 var spacing = toggle.checked ? 4 : 2;
+var originalOutput;
+var snakeOutput;
+var camelOutput;
 
 inputJson.addEventListener("keyup", function(event) {
     updateOutputJson();
@@ -60,6 +72,10 @@ inputJson.addEventListener("keyup", function(event) {
 
 document.addEventListener("DOMContentLoaded", function() {
     updateOutputJson();
+});
+
+caseList.addEventListener("change", function() {
+	updateOutputCase();
 });
 
 toggle.addEventListener("change", function(event) {
@@ -72,10 +88,70 @@ function updateOutputJson() {
 		if (!inputJson.value) {
 			outputJson.value = null;
 		} else {
-			outputJson.value = JSON.stringify(JSON.parse(inputJson.value), null, spacing);
+			let doc = JSON.parse(inputJson.value);
+			originalOutput = JSON.stringify(doc, null, spacing);
+			toSnakeCase(doc);
+			snakeOutput = JSON.stringify(doc, null, spacing);
+			toCamelCase(doc);
+			camelOutput = JSON.stringify(doc, null, spacing);
+
+			updateOutputCase();
 		}
 	} catch (err) {
 		outputJson.value = err.message;
+	}
+}
+
+function updateOutputCase() {
+	switch (caseList.value) {
+		case "snake_case":
+			outputJson.value = snakeOutput;
+			break;
+		case "camelCase":
+			outputJson.value = camelOutput;
+			break;
+		default:
+			outputJson.value = originalOutput;
+	}
+}
+
+function toSnakeCase(doc) {
+	if (Array.isArray(doc)) {
+		doc.forEach(subdoc => toSnakeCase(subdoc));
+	} else if (typeof(doc) == "object") {
+		let keys = Object.keys(doc);
+
+		keys.forEach(key => {
+			toSnakeCase(doc[key]);
+
+			let snakeKey = key.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
+			snakeKey = snakeKey.replace(/[0-9]+/g, number => `_${number}`);
+			if (key != snakeKey) {
+				doc[snakeKey] = doc[key];
+				delete doc[key];
+			}
+		});
+	} else {
+		return;
+	}
+}
+
+function toCamelCase(doc) {
+	if (Array.isArray(doc)) {
+		doc.forEach(subdoc => toCamelCase(subdoc));
+	} else if (typeof(doc) == "object") {
+		let keys = Object.keys(doc);
+		keys.forEach(key => {
+			toCamelCase(doc[key]);
+
+			let camelKey = key.replace(/(\_\w)/g, letter => letter[1].toUpperCase());
+			if (key != camelKey) {
+				doc[camelKey] = doc[key];
+				delete doc[key];
+			}
+		});
+	} else {
+		return;
 	}
 }
 
