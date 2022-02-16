@@ -124,8 +124,7 @@ function toSnakeCase(doc) {
 		keys.forEach(key => {
 			toSnakeCase(doc[key]);
 
-			let snakeKey = key.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
-			snakeKey = snakeKey.replace(/[0-9]+/g, number => `_${number}`);
+			let snakeKey = key.replace(/[A-Z]|[0-9]+/g, char => `_${char.toLowerCase()}`);
 			if (key != snakeKey) {
 				doc[snakeKey] = doc[key];
 				delete doc[key];
@@ -144,7 +143,7 @@ function toCamelCase(doc) {
 		keys.forEach(key => {
 			toCamelCase(doc[key]);
 
-			let camelKey = key.replace(/(\_\w)/g, letter => letter[1].toUpperCase());
+			let camelKey = key.replace(/(\_\w)/g, chars => chars[1].toUpperCase());
 			if (key != camelKey) {
 				doc[camelKey] = doc[key];
 				delete doc[key];
