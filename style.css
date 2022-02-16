@@ -59,73 +59,73 @@ select, textarea, .slider {
 /* toggle switch (source: https://stackoverflow.com/questions/63410507/how-to-connect-two-options-and-toggle-switch-buttons) */
 
 .label {
-  pointer-events: none;
-  display: flex;
-  align-items: center;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
 }
 
 .switch,
 .input:checked + .label .left,
 .input:not(:checked) + .label .right {
-  pointer-events: all;
-  cursor: pointer;
+    pointer-events: all;
+    cursor: pointer;
 }
 
 .input {
-  display: none;
+    display: none;
 }
 
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
 }
 
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
 }
 
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 25px;
-  width: 25px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+    position: absolute;
+    content: "";
+    height: 25px;
+    width: 25px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
 }
 
 input:checked + .label .slider {
-  background-color: #59b56d;
+    background-color: #59b56d;
 }
 
 input:checked + .label .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
 }
 
 .slider.round {
-  border-radius: 34px;
+    border-radius: 34px;
 }
 
 .slider.round:before {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 
 .left, .right {
-  margin: 0 .5em;
-  font-family: 'Raleway', sans-serif, Arial;
+    margin: 0 .5em;
+    font-family: 'Raleway', sans-serif, Arial;
 }
 
 /* text box */
