@@ -66,7 +66,7 @@ var originalOutput;
 var snakeOutput;
 var camelOutput;
 
-inputJson.addEventListener("keyup", function(event) {
+inputJson.addEventListener("input", function(event) {
     updateOutputJson();
 });
 
@@ -118,7 +118,7 @@ function updateOutputCase() {
 function toSnakeCase(doc) {
     if (Array.isArray(doc)) {
         doc.forEach(subdoc => toSnakeCase(subdoc));
-    } else if (typeof(doc) == "object") {
+    } else if (typeof(doc) == "object" && doc != null) {
         let keys = Object.keys(doc);
 
         keys.forEach(key => {
@@ -138,7 +138,7 @@ function toSnakeCase(doc) {
 function toCamelCase(doc) {
     if (Array.isArray(doc)) {
         doc.forEach(subdoc => toCamelCase(subdoc));
-    } else if (typeof(doc) == "object") {
+    } else if (typeof(doc) == "object" && doc != null) {
         let keys = Object.keys(doc);
         keys.forEach(key => {
             toCamelCase(doc[key]);
